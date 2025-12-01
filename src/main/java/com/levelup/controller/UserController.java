@@ -1,12 +1,10 @@
 package com.levelup.controller;
 
-import com.levelup.dto.TokenDTO;
-import com.levelup.dto.UserDTORequest;
-import com.levelup.dto.UserDTOResponse;
-import com.levelup.dto.UserLoginDTO;
+import com.levelup.dto.*;
 import com.levelup.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -31,5 +29,11 @@ public class UserController {
     public ResponseEntity<TokenDTO> loguearUsuario(@RequestBody UserLoginDTO dto){
         TokenDTO token = userService.loguearUsuario(dto);
         return ResponseEntity.ok(token); // 200 OK con token en el body
+    }
+
+    @PatchMapping("/cambiar-password")
+    public ResponseEntity<Void> cambiarClave(@RequestBody UserPasswordChangeDTO dto) {
+        userService.cambiarClave(dto);
+        return ResponseEntity.ok().build(); // 200 OK
     }
 }
