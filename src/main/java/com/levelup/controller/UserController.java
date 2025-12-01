@@ -1,6 +1,7 @@
 package com.levelup.controller;
 
 import com.levelup.dto.*;
+import com.levelup.service.IUserService;
 import com.levelup.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import java.net.URI;
 public class UserController {
 
 
-    private final UserService userService;
+    private final IUserService userService;
 
     @PostMapping("/register")
     public ResponseEntity<Void> crearUsuario(@RequestBody UserDTORequest dto){
