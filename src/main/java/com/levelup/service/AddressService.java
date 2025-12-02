@@ -12,12 +12,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
 public class AddressService implements IAddressService {
-
-
 
     private final ShippingAddressRepository addressRepository;
     private final UserRepository userRepository;
@@ -30,7 +31,6 @@ public class AddressService implements IAddressService {
         User user = userRepository.findById(correoAuth)
                 .orElseThrow(() -> new NotFoundException("Usuario no encontrado en el contexto de seguridad"));
 
-
         ShippingAddress nuevaDireccion = ShippingAddress.builder()
                 .user(user)
                 .nombre(dto.getNombre())
@@ -38,12 +38,35 @@ public class AddressService implements IAddressService {
                 .ciudad(dto.getCiudad())
                 .build();
 
-
-        ShippingAddress direccionGuardada = addressRepository.save(nuevaDireccion);
-
+        ShippingAddress addr = addressRepository.save(nuevaDireccion);
 
         return AddressDTOResponse.builder()
-                .id(direccionGuardada.getId())
+                .id(addr.getId())
+                .nombre(addr.getNombre())
+                .calle(addr.getCalle())
+                .ciudad(addr.getCiudad())
                 .build();
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<AddressDTOResponse> listarMisDirecciones() {
+
+        String correoAuth = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        return addressRepository.findByUser_Correo(correoAuth)
+                .stream()
+                .map(addr -> AddressDTOResponse.builder()
+                        .id(addr.getId())
+                        .nombre(addr.getNombre())
+                        .calle(addr.getCalle())
+                        .ciudad(addr.getCiudad())
+                        .build())
+                .collect(Collectors.toList());
+    }
+
+
+
+
 }

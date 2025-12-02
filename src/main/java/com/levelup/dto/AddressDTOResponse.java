@@ -7,4 +7,7 @@ import lombok.*;
 @Builder
 public class AddressDTOResponse {
     private Long id;
+    private String nombre;
+    private String calle;
+    private String ciudad;
 }
