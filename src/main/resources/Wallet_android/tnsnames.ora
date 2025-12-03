@@ -1,0 +1,12 @@
+android_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=g8c0defc437f1e6_android_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+android_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=g8c0defc437f1e6_android_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+android_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=g8c0defc437f1e6_android_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+android_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=g8c0defc437f1e6_android_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+android_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-valparaiso-1.oraclecloud.com))(connect_data=(service_name=g8c0defc437f1e6_android_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+
