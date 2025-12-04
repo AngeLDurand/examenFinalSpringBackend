@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Copiamos la wallet a una ruta fija
-COPY oracle_wallet /opt/oracle/wallet
+COPY oracle_wallet2 /opt/oracle/wallet
 
 # Configuramos la ruta de la wallet
 ENV TNS_ADMIN=/opt/oracle/wallet
